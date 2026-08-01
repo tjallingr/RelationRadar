@@ -5,7 +5,10 @@ import type { Actions, PageServerLoad } from "./$types";
 export const load: PageServerLoad = async ({ locals, url }) => {
 	if (locals.user) redirect(303, url.searchParams.get("redirectTo") ?? "/network");
 
-	return { demoMode: !locals.container.persistent };
+	return {
+		demoMode: !locals.container.persistent,
+		confirmationFailed: url.searchParams.get("error") === "confirmation_failed"
+	};
 };
 
 export const actions: Actions = {
@@ -24,13 +27,14 @@ export const actions: Actions = {
 		redirect(303, url.searchParams.get("redirectTo") ?? "/network");
 	},
 
-	signUp: async ({ request, locals }) => {
+	signUp: async ({ request, locals, url }) => {
 		const data = await request.formData();
 
 		try {
 			const result = await locals.container.auth.signUp({
 				email: requireField(data, "email"),
-				password: requireField(data, "password")
+				password: requireField(data, "password"),
+				emailRedirectTo: `${url.origin}/auth/callback`
 			});
 
 			// Supabase can require email confirmation, in which case there is no

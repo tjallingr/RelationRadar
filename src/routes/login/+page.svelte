@@ -8,6 +8,10 @@
 <section class="auth">
 	<h1>Sign in</h1>
 
+	{#if data.confirmationFailed}
+		<p class="error">Email confirmation failed. Try signing in, or create the account again.</p>
+	{/if}
+
 	{#if data.demoMode}
 		<p class="muted">
 			No Supabase project is configured. Any email and password will sign you in locally.

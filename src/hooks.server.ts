@@ -2,7 +2,7 @@ import { redirect, type Handle } from "@sveltejs/kit";
 import { createContainer } from "$lib/server/container";
 
 /** Routes reachable without a session. Everything else requires sign-in. */
-const PUBLIC_ROUTES = ["/", "/login"];
+const PUBLIC_ROUTES = ["/", "/login", "/auth/callback"];
 
 /**
  * Per-request wiring plus the single auth gate. Load functions and actions can
