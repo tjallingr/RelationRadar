@@ -1,4 +1,4 @@
-<section class="card">
+<section>
 	<h1>RelationRadar</h1>
 	<p class="muted">
 		Map the people around you, score how close, how supportive and how frictional each relationship

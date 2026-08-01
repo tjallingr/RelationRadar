@@ -5,12 +5,12 @@
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 </script>
 
-<section class="card auth">
+<section class="auth">
 	<h1>Sign in</h1>
 
 	{#if data.demoMode}
 		<p class="muted">
-			No Supabase project is configured, so any email and password will sign you in locally.
+			No Supabase project is configured. Any email and password will sign you in locally.
 		</p>
 	{/if}
 
@@ -29,7 +29,7 @@
 			<p class="error">{form.message}</p>
 		{/if}
 
-		<div class="row">
+		<div class="actions">
 			<button class="primary" type="submit">Sign in</button>
 			<button type="submit" formaction="?/signUp">Create account</button>
 		</div>
@@ -38,17 +38,24 @@
 
 <style>
 	.auth {
-		max-width: 380px;
+		max-width: 360px;
 	}
 
 	form {
 		display: grid;
 		gap: 0.75rem;
+		margin-top: 0.75rem;
 	}
 
 	label {
 		display: grid;
 		gap: 0.25rem;
-		font-size: 0.9rem;
+	}
+
+	.actions {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		margin-top: 0.25rem;
 	}
 </style>

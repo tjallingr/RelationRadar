@@ -22,7 +22,7 @@
 				{/each}
 			</nav>
 
-			<form method="POST" action="/logout" class="row">
+			<form method="POST" action="/logout" class="session">
 				<span class="muted">{data.user.email}</span>
 				<button class="link" type="submit">Sign out</button>
 			</form>
@@ -30,9 +30,8 @@
 	</header>
 
 	{#if !data.persistent}
-		<p class="banner">
-			Running without Supabase credentials: data is kept in memory and disappears when the dev
-			server restarts.
+		<p class="banner muted">
+			No database configured. Data is kept in memory and lost when the dev server restarts.
 		</p>
 	{/if}
 
@@ -43,21 +42,22 @@
 
 <style>
 	.shell {
-		max-width: 1100px;
+		max-width: 960px;
 		margin: 0 auto;
-		padding: 1rem;
+		padding: 1.5rem 1rem 2rem;
 	}
 
 	header {
 		display: flex;
-		align-items: center;
-		gap: 1.5rem;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
 		padding-bottom: 0.75rem;
 		border-bottom: 1px solid var(--border);
 	}
 
 	.brand {
-		font-weight: 600;
+		font-size: 1rem;
 		text-decoration: none;
 		color: var(--text);
 	}
@@ -74,20 +74,24 @@
 	}
 
 	nav a.active {
-		color: var(--accent);
-		font-weight: 600;
+		color: var(--text);
+		text-decoration: underline;
+	}
+
+	.session {
+		display: flex;
+		align-items: baseline;
+		gap: 0.75rem;
+		margin: 0;
 	}
 
 	.banner {
 		margin: 0.75rem 0 0;
-		padding: 0.5rem 0.75rem;
-		border-radius: var(--radius);
-		background: #fff6e0;
-		border: 1px solid #f0d9a0;
-		font-size: 0.85rem;
+		padding: 0;
+		font-style: italic;
 	}
 
 	main {
-		padding-top: 1rem;
+		padding-top: 1.25rem;
 	}
 </style>

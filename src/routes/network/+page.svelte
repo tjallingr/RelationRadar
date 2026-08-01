@@ -26,10 +26,10 @@
 </script>
 
 <div class="layout">
-	<section>
+	<section class="graph-section">
 		<h1>Your network</h1>
 		<p class="muted">
-			Pick two people to score their relationship. Click the background to clear the selection.
+			Select two people to score their relationship. Click the background to clear the selection.
 		</p>
 
 		<NetworkGraph
@@ -41,9 +41,9 @@
 	</section>
 
 	<aside>
-		<div class="card">
+		<div class="panel">
 			<h2>Add someone</h2>
-			<form method="POST" action="?/addPerson" class="row" use:enhance>
+			<form method="POST" action="?/addPerson" class="add-form" use:enhance>
 				<input name="name" placeholder="Name" required />
 				<button class="primary" type="submit">Add</button>
 			</form>
@@ -53,12 +53,12 @@
 			{/if}
 		</div>
 
-		<div class="card">
+		<div class="panel">
 			<h2>People</h2>
 			<PersonList people={data.network.people} {selectedIds} onselect={select} />
 		</div>
 
-		<div class="card">
+		<div class="panel">
 			{#if selectedPeople.length === 2}
 				<RelationshipEditor
 					network={data.network}
@@ -76,9 +76,13 @@
 <style>
 	.layout {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) 320px;
-		gap: 1rem;
+		grid-template-columns: minmax(0, 1fr) 280px;
+		gap: 1.5rem;
 		align-items: start;
+	}
+
+	.graph-section h1 {
+		margin-bottom: 0.25rem;
 	}
 
 	aside {
@@ -86,7 +90,23 @@
 		gap: 1rem;
 	}
 
-	@media (max-width: 860px) {
+	.panel {
+		border: 1px solid var(--border);
+		padding: 0.75rem;
+	}
+
+	.add-form {
+		display: flex;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+
+	.add-form input {
+		flex: 1;
+		min-width: 0;
+	}
+
+	@media (max-width: 760px) {
 		.layout {
 			grid-template-columns: minmax(0, 1fr);
 		}

@@ -13,7 +13,7 @@
 	const values = $derived({ ...data.profile, ...edits });
 </script>
 
-<section class="card profile">
+<section class="profile">
 	<h1>About you</h1>
 	<p class="muted">
 		How you experience and maintain your network, on a scale from {SCORE_MIN} to {SCORE_MAX}.
@@ -22,9 +22,9 @@
 	<form method="POST" action="?/save" use:enhance>
 		{#each PROFILE_SCALES as scale (scale)}
 			<label>
-				<span class="row">
+				<span class="label-row">
 					{PROFILE_SCALE_LABELS[scale]}
-					<strong>{values[scale] ?? "—"}</strong>
+					<span>{values[scale] ?? "—"}</span>
 				</span>
 				<input
 					type="range"
@@ -38,7 +38,7 @@
 			</label>
 		{/each}
 
-		<div class="row">
+		<div class="actions">
 			<button class="primary" type="submit">Save</button>
 			{#if form?.saved}<span class="muted">Saved.</span>{/if}
 			{#if form?.message}<span class="error">{form.message}</span>{/if}
@@ -48,7 +48,7 @@
 
 <style>
 	.profile {
-		max-width: 520px;
+		max-width: 480px;
 	}
 
 	form {
@@ -60,16 +60,16 @@
 	label {
 		display: grid;
 		gap: 0.25rem;
-		font-size: 0.9rem;
 	}
 
-	.row {
+	.label-row {
+		display: flex;
 		justify-content: space-between;
 	}
 
-	input[type="range"] {
-		padding: 0;
-		border: none;
-		background: none;
+	.actions {
+		display: flex;
+		gap: 0.75rem;
+		align-items: baseline;
 	}
 </style>

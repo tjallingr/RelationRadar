@@ -1,14 +1,15 @@
 :root {
-	--bg: #f6f7f9;
-	--surface: #ffffff;
-	--border: #e2e5ea;
-	--text: #1c2128;
-	--muted: #6b7480;
-	--accent: #3b6ef5;
-	--danger: #c0392b;
-	--radius: 8px;
+	--bg: #fff;
+	--surface: #fff;
+	--border: #bbb;
+	--text: #111;
+	--muted: #555;
+	--accent: #111;
+	--danger: #800000;
 
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 15px;
+	line-height: 1.5;
 	color: var(--text);
 	background: var(--bg);
 }
@@ -23,26 +24,28 @@ body {
 }
 
 h1 {
-	font-size: 1.4rem;
-	margin: 0 0 0.25rem;
+	font-size: 1.25rem;
+	font-weight: normal;
+	margin: 0 0 0.5rem;
 }
 
 h2 {
-	font-size: 1.05rem;
-	margin: 0 0 0.75rem;
+	font-size: 1rem;
+	font-weight: normal;
+	margin: 0 0 0.5rem;
 }
 
 a {
 	color: var(--accent);
+	text-decoration: underline;
 }
 
 button,
 input,
 select {
 	font: inherit;
-	border-radius: var(--radius);
 	border: 1px solid var(--border);
-	padding: 0.45rem 0.6rem;
+	padding: 0.35rem 0.5rem;
 	background: var(--surface);
 	color: inherit;
 }
@@ -52,42 +55,48 @@ button {
 }
 
 button.primary {
-	background: var(--accent);
-	border-color: var(--accent);
-	color: #fff;
+	background: var(--text);
+	border-color: var(--text);
+	color: var(--bg);
 }
 
 button.link {
 	border: none;
 	background: none;
 	color: var(--muted);
-	padding: 0.2rem 0.35rem;
+	padding: 0;
 	text-decoration: underline;
+	font-size: 0.9rem;
 }
 
 button.link:hover {
-	color: var(--danger);
+	color: var(--text);
 }
 
 .card {
-	background: var(--surface);
 	border: 1px solid var(--border);
-	border-radius: var(--radius);
-	padding: 1rem;
+	padding: 0.75rem 1rem;
 }
 
 .muted {
 	color: var(--muted);
-	font-size: 0.875rem;
+	font-size: 0.9rem;
 }
 
 .error {
 	color: var(--danger);
-	font-size: 0.875rem;
+	font-size: 0.9rem;
 }
 
 .row {
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
+}
+
+input[type="range"] {
+	padding: 0;
+	border: none;
+	background: none;
+	accent-color: var(--text);
 }
