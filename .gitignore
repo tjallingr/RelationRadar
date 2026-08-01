@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# SvelteKit / Node
+node_modules/
+.svelte-kit/
+.vercel/
+.env.*
+!.env.example
