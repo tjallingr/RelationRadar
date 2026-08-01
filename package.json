@@ -14,6 +14,7 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "migrate:up": "dotenv -e .env -- bash -c 'test -n \"$DATABASE_URL\" || { echo \"Missing DATABASE_URL in .env — see .env.example\"; exit 1; }; supabase db push --db-url \"$DATABASE_URL\"'",
     "prepare": "svelte-kit sync"
   },
   "devDependencies": {
@@ -21,6 +22,8 @@
     "@sveltejs/kit": "^2.70.2",
     "@sveltejs/vite-plugin-svelte": "^7.2.0",
     "@types/cytoscape": "^3.21.9",
+    "dotenv-cli": "^11.0.0",
+    "supabase": "^2.111.0",
     "svelte": "^5.56.8",
     "svelte-check": "^4.7.4",
     "typescript": "^6.0.3",
